@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="http://www.lavidge.com/favicon.ico">
+    <title>Signature Generator</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.4/css/bulma.min.css">
+  </head>
+  <body>
+    <div class="columns" id="root">
+        <div class="column is-two-thirds">
+            <section class="section">
+                <h1 class="title">Signature Generator</h1>
+                <p class="subtitle">Enter your information in the form and you shiny new signature will appear as if by magic.</p>
+                <section class="form">
+                    <div class="field">
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input v-model="form.name" class="input" type="text" placeholder="Kevin Reynolds">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Position</label>
+                        <input v-model="form.position" class="input" type="text" placeholder="Front-End Developer">
+                    </div>
+                    <div class="field">
+                        <label class="label">Phone Number</label>
+                        <input v-model="form.phone" class="input" type="text" placeholder="480-555-5555">
+                    </div>
+                    <div class="field">
+                        <label class="label">Fax Number</label>
+                        <input v-model="form.fax" class="input" type="text" placeholder="602-555-5555">
+                    </div>
+                    <div class="field">
+                        <label class="label">Icon</label>
+                        <div class="control">
+                            <div class="select">
+                                <select v-model="form.icon">
+                                    <option disabled value="">Nothing selected</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input v-model="form.fax" class="input" type="text" placeholder="Fax Number">
+                    </div>
+                </section>
+
+            </section>
+        </div>
+        <div class="column">
+            <section class="section" id="results">
+                <div class="box">
+                    <ul>          
+                        <!-- loop through all the `form` properties and show their values -->
+                        <li v-for="(item, k) in form">
+                            <strong>{{ k }}:</strong> {{ item }}
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        /* Vue.component('custom-input', {
+            props: ['value'],
+            template: `
+                <input
+                    v-bind:value="value"
+                    v-on:input="$emit('input', $event.target.value)"
+                >
+            `
+        }) */
+        new Vue({
+            el: '#root',
+            data: {
+                form: {
+                    name: '',
+                    position: '',
+                    phone: '',
+                    fax: '',
+                    icon: false,
+                },
+            },
+        });
+    </script>
+  </body>
+</html>
